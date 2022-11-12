@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type node struct {
 	val  string
@@ -11,9 +14,33 @@ type lista struct {
 }
 
 func main() {
-	var pila lista
+	fmt.Println(check("<a> <b> </b> <c> <d> </d> </c> </a>"))
+	fmt.Println(check("<a> <b> </a> </c>"))
+	fmt.Println(check("<a> <b> </a> </b>"))
+}
 
-	
+func check(input string) bool {
+	var pila lista
+	in := strings.Split(input, " ")
+
+	for i := 0; i < len(in); i++ {
+		caso := in[i]
+		if len(caso) == 3 {
+			add(&pila, caso)
+			//fmt.Println("i:", i) 						//DEBUG
+			//stampa(pila)         						//DEBUG
+		} else {
+			caso = caso[:1] + caso[2:]
+			controllo := pop(&pila)
+			//fmt.Println("AAAA", in, controllo) 		//DEBUG
+			//stampa(pila)                      		//DEBUG
+			if controlla(caso, controllo) == false {
+				//fmt.Println("error pos", i) 			//DEBUG
+				return false
+			}
+		}
+	}
+	return true
 }
 
 func newNode(val string) *node {
@@ -29,8 +56,16 @@ func add(pila *lista, val string) {
 func pop(pila *lista) string {
 	var x string
 	x = pila.testa.val
-	*pila.testa = *pila.testa.next
+	if pila.testa.next != nil {
+		*pila.testa = *pila.testa.next
+	} else {
+		*pila.testa = node{"", nil}
+	}
 	return x
+}
+
+func controlla(a, b string) bool {
+	return a == b
 }
 
 func stampa(pila lista) {

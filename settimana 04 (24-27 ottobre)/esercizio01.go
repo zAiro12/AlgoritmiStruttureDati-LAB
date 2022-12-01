@@ -11,18 +11,16 @@ type linkedList struct {
 }
 
 func main() {
-
 }
 
 func newNode(n int) *listNode {
 	return &listNode{n, nil}
 }
 
-func addNewNode(l linkedList, n int) linkedList {
+func addNewNode(l *linkedList, n int) {
 	nuovoNodo := newNode(n)
 	nuovoNodo.next = l.head
 	l.head = nuovoNodo
-	return l
 }
 
 func printList(l linkedList) {

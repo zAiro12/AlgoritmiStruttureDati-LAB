@@ -18,8 +18,8 @@ func main() {
 	}
 
 	// Aggiungi archi tra i nodi se la differenza tra i loro valori è <= 2
-	for node1, _ := range graph {
-		for node2, _ := range graph {
+	for node1 := range graph {
+		for node2 := range graph {
 			if node1 != node2 && abs(node1-node2) <= 2 {
 				addEdge(graph, node1, node2)
 			}

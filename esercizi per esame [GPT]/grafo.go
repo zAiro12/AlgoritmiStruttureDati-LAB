@@ -39,12 +39,6 @@ func main() {
 
 // Aggiungi un arco tra due nodi in un grafo non orientato
 func addEdge(graph map[int][]int, node1 int, node2 int) {
-	if _, ok := graph[node1]; !ok {
-		graph[node1] = []int{}
-	}
-	if _, ok := graph[node2]; !ok {
-		graph[node2] = []int{}
-	}
 	if !contains(graph[node1], node2) {
 		graph[node1] = append(graph[node1], node2)
 	}

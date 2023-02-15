@@ -9,11 +9,11 @@ func main() {
 	// Aggiungi nodi al grafo
 	var n int
 	fmt.Println("Quanti numeri vuoi inserire?")
-	fmt.Scanln(&n)
+	fmt.Scan(&n)
 	fmt.Println("Inserisci i numeri:")
 	for i := 0; i < n; i++ {
 		var node int
-		fmt.Scanln(&node)
+		fmt.Scan(&node)
 		graph[node] = []int{}
 	}
 
